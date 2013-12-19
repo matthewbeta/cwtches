@@ -1,1 +1,12 @@
-@import: "_normalize.scss";
+@import "_normalize.scss";
+
+html, 
+body {
+	background-color: #eee;
+	min-height: 100%;
+	color: #4d4d4d;
+}
+.main-content {
+	max-width: 32em;
+	margin: 0 auto;
+}
