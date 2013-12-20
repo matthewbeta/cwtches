@@ -6,12 +6,24 @@ bbnote.NoteSnippetView = Backbone.View.extend({
 
 	className: "snippet",
 
+	events: {
+		"click .btn--delete": "removeNote"
+	},
+
+	initialize: function() {
+		this.listenTo(this.model, 'destroy', this.remove);
+	},
+
 	render: function(template) {
 		var template = $("#noteSnippet").html();
 		var compiled = Handlebars.compile(template);
 		var html = compiled(this.model.attributes);
 		this.$el.html(html);
 		return this;
+	}, 
+
+	removeNote: function() {
+		this.model.destroy();
 	}
 
 });
