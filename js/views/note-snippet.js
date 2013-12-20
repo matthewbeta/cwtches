@@ -1,29 +1,17 @@
-var NoteSnippetView = Backbone.View.extend({
+var bbnote = bbnote || {};
 
-	events: {
-		"click .heading--snippet": "linkToNote"
-	},
+bbnote.NoteSnippetView = Backbone.View.extend({
 
-	tagname: "li",
+	tagName: "li",
 
 	className: "snippet",
 
-	render: function() {
+	render: function(template) {
 		var template = $("#noteSnippet").html();
 		var compiled = Handlebars.compile(template);
 		var html = compiled(this.model.attributes);
-		// console.log(html);
 		this.$el.html(html);
 		return this;
-	},
-
-	linkToNote: function(e) {
-		e.preventDefault();
-
-		var id = this.model.get("id");
-		// var url = "note/" + id;
-		console.log(id)
-		noteRouter.viewNote(id);
 	}
 
 });

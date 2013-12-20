@@ -1,20 +1,26 @@
-var NotesView = Backbone.View.extend({
+var bbnote = bbnote || {};
 
-	initialize: function(initialNotes) {
-		this.collection = new NotesCollection( notes );
-		this.listenTo(this.collection, "change", this.render);
-		console.log(this.collection)
-	},
+bbnote.NotesView = Backbone.View.extend({
 
-	tagname: 'ul',
-	className: 'notes',
+	el: "#app",
+	tagName: "ol",
+	className: "note-snippets"
+	initialize: function() {
+		this.listenTo( bbnote.notesCollection, 'add', this.renderSnippet );
+		bbnote.notesCollection.fetch();
+	}, 
 
 	render: function() {
-		this.collection.each(function(note) {
-			var noteSnippet = new NoteSnippetView({ model: note});
-			this.$el.append(noteSnippet.render().el);
+		bbnote.notesCollection.each(function(item) {
+			this.renderSnippet(item);
 		}, this);
-		return this;
+	},
+
+	renderSnippet: function(item) {
+		var noteSnippet = new bbnote.NoteSnippetView({
+			model: item
+		});
+		this.$el.append(noteSnippet.render().el);
 	}
 
 });
