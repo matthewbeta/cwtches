@@ -4,8 +4,14 @@ bbnote.NoteModel = Backbone.Model.extend({
 
 	defaults: {
     title:  "New note",
-    createDate : (function() {return new Date()}),
-    editDate : (function() {return new Date()}),
+    createDate : (function() {
+    							return moment()
+    										.format("dddd, MMMM Do YYYY, h:mm:ss a")
+    							}),
+    editDate : (function() {
+  							return moment()
+  										.format("dddd, MMMM Do YYYY, h:mm:ss a")
+  							}),
     content: "Whats up?"
   }
 

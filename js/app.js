@@ -1,5 +1,10 @@
 var bbnote = bbnote || {};
 
+
+  bbnote.router = new bbnote.NoteRouter();
+  Backbone.history.start();
+
+
 $(function() {
 	new bbnote.NotesView();
 
