@@ -22,11 +22,12 @@
 
 		</section>
 		<!-- /.main-content -->
-		
 		<script id="noteSnippet" type="text/x-handlebars">
 
-			<h2 class="heading--snippet">{{title}}</h2>
-
+			<a href="#" class="detail-link">
+				<h2 class="heading--snippet">{{title}}</h2>
+			</a>
+		
 			<div class="snippet--content">
 				{{content}}
 			</div>
@@ -39,10 +40,10 @@
 		</script>
 
 		<script id="noteDetail" type="text/x-handlebars">
-			
+
 			<h2 class="heading--detail">{{title}}</h2>
 			<p class="create-date--detail">Created: {{createDate}}</p>
-			<p class="edit-date--detail">LAst updated: {{editDate}}</p>
+			<p class="edit-date--detail">Last updated: {{editDate}}</p>
 
 			<div class="detail--content">
 				{{content}}
@@ -53,6 +54,29 @@
 			<button class="btn--delete">Delete</button>
 
 		</script>
+
+		<script id="noteEdit" type="text/x-handlebars">
+
+			<ul class="note__form">
+
+				<li class="note__form__input">
+					<label for="noteTitle" class="label">Title</label>
+					<input type="text" id="noteTitle" class="input--txt">
+				</li>
+
+				<li class="note__form__input">
+					<label for="noteContent" class="label">Whats up</label>
+					<textarea id="noteContent" class="input--textarea"></textarea>
+				</li>
+
+			</ul>
+
+			<div class="action">
+				<button class="btn--save">Save</button>
+			</div>
+
+		</script>
+
 
 		<script src="js/lib/jquery.min.js"></script>
 		<script src="js/lib/underscore-min.js"></script>

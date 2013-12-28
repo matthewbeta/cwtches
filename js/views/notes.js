@@ -3,8 +3,9 @@ var bbnote = bbnote || {};
 bbnote.NotesView = Backbone.View.extend({
 
 	el: "#app",
-	tagName: "ol",
+
 	className: "note-snippets",
+	
 	initialize: function() {
 		this.listenTo( bbnote.notesCollection, 'add', this.renderSnippet );
 		bbnote.notesCollection.fetch();

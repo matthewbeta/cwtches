@@ -8,7 +8,7 @@ bbnote.NoteSnippetView = Backbone.View.extend({
 
 	events: {
 		"click .btn--delete": "removeNote",
-		"click .heading--snippet": "viewDetail"
+		"click .detail-link": "viewDetail"
 	},
 
 	initialize: function() {
@@ -27,8 +27,9 @@ bbnote.NoteSnippetView = Backbone.View.extend({
 		this.model.destroy();
 	},
 
-	viewDetail: function(id) {
-		id = this.model.id;
+	viewDetail: function(e) {
+		e.preventDefault();
+		id = this.model.get("id");
 		bbnote.router.navigate("/note/" + id, {trigger: true});
 	}
 

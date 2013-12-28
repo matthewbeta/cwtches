@@ -1,22 +1,25 @@
 var bbnote = bbnote || {};
 
 bbnote.NoteDetailView = Backbone.View.extend({
+	
+	el: "#app",
+
 	className: "note__detail",
 
 	events: {
-		//"click .btn--delete": "removeNote",
-		//"click .btn--edit": "editNote"
 	},
 
 	initialize: function() {
-		this.listenTo(this.model, 'destroy', this.remove);
+		console.log("Note " + this.model + " detail view init" );
 	},
 
 	render: function(template) {
+		console.log(this)
 		var template = $("#noteDetail").html();
 		var compiled = Handlebars.compile(template);
 		var html = compiled(this.model.attributes);
 		this.$el.html(html);
 		return this;
 	}
+	
 });
