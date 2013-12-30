@@ -11,43 +11,47 @@
 
 		<section id="main" class="main-content">
 			<header class="header--app">
-				
 				<h1 class="heading--app">Note taking app</h1>
-			
 			</header>
 			<!-- /.header app -->
-
 			<div id="app" class="content"></div>
 			<!-- /#app -->
-
 		</section>
 		<!-- /.main-content -->
-		<script id="noteSnippet" type="text/x-handlebars">
-
-			<a href="#" class="detail-link">
-				<h2 class="heading--snippet">{{title}}</h2>
-			</a>
 		
-			<div class="snippet--content">
-				{{content}}
-			</div>
+		<script id="notes" type="text/template">
+		<ol class="note__list">
+			<% _.each(notes, function(note) { %>
+			<li class="note-snippet">
 
-			<p class="id--snippet">{{id}}</p>
-			<p class="create-date--snippet">{{createDate}}</p>
+				<a href="#/note/<%= note.get('id') %>" class="detail-link">
+					<h2 class="heading--snippet"><%= note.get('title') %></h2>
+				</a>
+			
+				<div class="snippet--content"><%= note.get('content') %></div>
 
-			<button class="btn--delete">Delete</button>
+				<p class="create-date--snippet"><%= note.get('createDate') %></p>
+
+				<button class="btn--edit">Edit</button>
+				<button class="btn--delete">Delete</button>
+			
+			</li>
+			<% }); %>
+		</ol>
+			
 
 		</script>
 
-		<script id="noteDetail" type="text/x-handlebars">
+		<script id="note" type="text/template">
 
-			<h2 class="heading--detail">{{title}}</h2>
-			<p class="create-date--detail">Created: {{createDate}}</p>
-			<p class="edit-date--detail">Last updated: {{editDate}}</p>
-
-			<div class="detail--content">
-				{{content}}
-			</div>
+			<h2 class="heading--detail"><%= title %></h2>
+			<p class="create-date--detail">Created: <%= createDate %></p>
+			<% if (editDate === "") { %>
+			<p class="edit-date--detail">Last updated: <%= createDate %></p>
+			<% } else { %>
+			<p class="edit-date--detail">Last updated: <%= editDate %></p>
+			<% } %>
+			<div class="detail--content"><%= content %></div>
 			
 			<button class="btn--edit">Edit</button>
 
@@ -55,7 +59,7 @@
 
 		</script>
 
-		<script id="noteEdit" type="text/x-handlebars">
+		<script id="noteEdit" type="text/template">
 
 			<ul class="note__form">
 
@@ -80,17 +84,83 @@
 
 		<script src="js/lib/jquery.min.js"></script>
 		<script src="js/lib/underscore-min.js"></script>
-		<script src="js/lib/handlebars.min.js"></script>
 		<script src="js/lib/backbone-min.js"></script>
 		<script src="js/lib/backbone.localstorage-min.js"></script>
 		<script src="js/lib/moment.min.js"></script>
 		<script src="js/models/note.js"></script>
 		<script src="js/collections/notes.js"></script>
-		<script src="js/views/notes.js"></script>
-		<script src="js/views/note-snippet.js"></script>
-		<script src="js/views/note-detail.js"></script>
+		<script src="js/views/note-list.js"></script>
+		<script src="js/views/note.js"></script>
+		<script src="js/views/note-edit.js"></script>
 		<script src="js/routers/router.js"></script>
 		<script src="js/app.js"></script>
+
+		<script>
+
+	    // var Note = Backbone.Model.extend({
+	    // });
+
+		 // 	var Notes = Backbone.Collection.extend({
+		 // 		model: Note,
+		 // 		localStorage: new Backbone.LocalStorage('bbnote')
+	  //   });
+ 			
+			// var notes = new Notes;
+
+		 	// var NoteListView = Backbone.View.extend({
+		 	// 	el: "#app",
+		 	// 	render: function() {
+		 	// 		var that = this;
+		 	// 		notes.fetch({
+	   //        success: function (notes) {
+	   //          var template = _.template($('#notes').html(), {notes: notes.models});
+	   //          that.$el.html(template);
+	   //        }
+	   //      });
+		 	// 	}
+		 	// });
+
+		 	// var noteListView = new NoteListView();
+
+		 	// var NoteView = Backbone.View.extend({
+		 	// 	el: "#app",
+		 	// 	render: function(id) {
+					
+				// 	this.$el.html("");
+			 // 			var template = _.template( $('#note').html() );
+			 // 			var that = this;
+			 // 			notes.fetch({
+			 // 				success: function(notes) {
+			 // 					var note = notes.get(id);
+	 		// 					that.$el.html( template( note.toJSON() ) );
+			 // 				}
+			 // 			});
+		 	// 	}
+		 	// });
+
+		 	// var noteView = new NoteView();
+
+		 	// var Router = Backbone.Router.extend({
+    //     routes: {
+    //       "": "home",
+    //       "note/:id": "note"
+    //     }
+	   //  });
+
+	   //  var router = new Router;
+
+	   //  router.on('route:home', function() {
+	   //    noteListView.render();
+	   //  })
+
+	   //  router.on('route:note', function(id) {
+	   //    noteView.render({id: id});
+	   //  })
+
+	   //  Backbone.history.start();
+
+
+		</script>
 
 	</body>
 </html>

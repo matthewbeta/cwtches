@@ -1,18 +1,19 @@
-var bbnote = bbnote || {};
-
-bbnote.NoteModel = Backbone.Model.extend({
+var Note = Backbone.Model.extend({
 
 	defaults: {
-    title:  "New note",
-    createDate : (function() {
-    							return moment()
-    										.format("dddd, MMMM Do YYYY, h:mm:ss a")
-    							}),
-    editDate : (function() {
-  							return moment()
-  										.format("dddd, MMMM Do YYYY, h:mm:ss a")
-  							}),
-    content: "Whats up?"
+    title:  "", 
+    createDate : "", //DATE
+    editDate : "", //DATE
+    content: ""
   }
+
+  /**
+  * CREATE A NEW FORMATTED DATE
+  
+  (function() {
+    return moment().format("dddd, MMMM Do YYYY, h:mm:ss a")
+  })
+  
+  */
 
 });

@@ -1,20 +1,18 @@
-var bbnote = bbnote || {};
-
-bbnote.NoteRouter = Backbone.Router.extend({
+var Router = Backbone.Router.extend({
   routes: {
-  	"": "index",
-    "note/:id": "viewDetail"
-  },
-
-  index: function(){
-  	console.log("you are at the index");
-  	var notesView = new bbnote.NotesView({});
-  },
-
-  viewDetail: function(item){
-  	console.log("you are viewing note " + item);
-  	var detailView = new bbnote.NoteDetailView({model: item});
-  	detailView.$el.append(detailView.render().el);
+    "": "home",
+    "note/:id": "note"
   }
-
 });
+
+var router = new Router;
+
+router.on('route:home', function() {
+  noteListView.render();
+})
+
+router.on('route:note', function(id) {
+  noteView.render({id: id});
+})
+
+Backbone.history.start();
