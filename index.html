@@ -19,7 +19,7 @@
 		</section>
 		<!-- /.main-content -->
 		
-		<script id="notes" type="text/template">
+		<!--<script id="notes" type="text/template">
 		<ol class="note__list">
 			<% _.each(notes, function(note) { %>
 			<li class="note-snippet">
@@ -32,13 +32,31 @@
 
 				<p class="create-date--snippet"><%= note.get('createDate') %></p>
 
-				<button class="btn--edit">Edit</button>
-				<button class="btn--delete">Delete</button>
+				
 			
 			</li>
 			<% }); %>
-		</ol>
+		</ol>-->
 			
+
+		</script>
+
+		<script id="noteSnippet" type="text/template">
+
+			<a href="#" class="detail-link"><h2 class="heading--detail"><%= title %></h2></a>
+			<p class="create-date--detail">Created: <%= createDate %></p>
+			
+			<div class="detail--content"><%= content %></div>
+			
+			<% if (editDate === "") { %>
+			<p class="edit-date--detail">Last updated: <%= createDate %></p>
+			<% } else { %>
+			<p class="edit-date--detail">Last updated: <%= editDate %></p>
+			<% } %>
+			
+			<button class="btn--edit">Edit</button>
+
+			<button class="btn--delete">Delete</button>
 
 		</script>
 
@@ -46,12 +64,14 @@
 
 			<h2 class="heading--detail"><%= title %></h2>
 			<p class="create-date--detail">Created: <%= createDate %></p>
+			
+			<div class="detail--content"><%= content %></div>
+			
 			<% if (editDate === "") { %>
 			<p class="edit-date--detail">Last updated: <%= createDate %></p>
 			<% } else { %>
 			<p class="edit-date--detail">Last updated: <%= editDate %></p>
 			<% } %>
-			<div class="detail--content"><%= content %></div>
 			
 			<button class="btn--edit">Edit</button>
 
@@ -90,6 +110,7 @@
 		<script src="js/models/note.js"></script>
 		<script src="js/collections/notes.js"></script>
 		<script src="js/views/note-list.js"></script>
+		<script src="js/views/note-snippet.js"></script>
 		<script src="js/views/note.js"></script>
 		<script src="js/views/note-edit.js"></script>
 		<script src="js/routers/router.js"></script>

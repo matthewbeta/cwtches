@@ -3,4 +3,4 @@ var Notes = Backbone.Collection.extend({
 	localStorage: new Backbone.LocalStorage('bbnote')
 });
 	
-var notes = new Notes;
+// var notes = new Notes;
