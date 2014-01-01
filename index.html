@@ -18,28 +18,6 @@
 			<!-- /#app -->
 		</section>
 		<!-- /.main-content -->
-		
-		<!--<script id="notes" type="text/template">
-		<ol class="note__list">
-			<% _.each(notes, function(note) { %>
-			<li class="note-snippet">
-
-				<a href="#/note/<%= note.get('id') %>" class="detail-link">
-					<h2 class="heading--snippet"><%= note.get('title') %></h2>
-				</a>
-			
-				<div class="snippet--content"><%= note.get('content') %></div>
-
-				<p class="create-date--snippet"><%= note.get('createDate') %></p>
-
-				
-			
-			</li>
-			<% }); %>
-		</ol>-->
-			
-
-		</script>
 
 		<script id="noteSnippet" type="text/template">
 
@@ -54,9 +32,7 @@
 			<p class="edit-date--detail">Last updated: <%= editDate %></p>
 			<% } %>
 			
-			<button class="btn--edit">Edit</button>
-
-			<button class="btn--delete">Delete</button>
+			<a href="#" class="edit-link">Edit</a>
 
 		</script>
 
@@ -80,24 +56,30 @@
 		</script>
 
 		<script id="noteEdit" type="text/template">
+			<form action="submit">
 
-			<ul class="note__form">
+				<ul class="note__form">
 
-				<li class="note__form__input">
-					<label for="noteTitle" class="label">Title</label>
-					<input type="text" id="noteTitle" class="input--txt">
-				</li>
+					<li class="note__form__input">
+						<label for="noteTitle" class="label">Title</label>
+						<input type="text" id="noteTitle" class="input--txt" value="<%= title %>">
+					</li>
 
-				<li class="note__form__input">
-					<label for="noteContent" class="label">Whats up</label>
-					<textarea id="noteContent" class="input--textarea"></textarea>
-				</li>
+					<li class="note__form__input">
+						<label for="noteContent" class="label">Whats up</label>
+						<textarea id="noteContent" class="input--textarea"><%= content %></textarea>
+					</li>	
 
-			</ul>
+				</ul>
 
-			<div class="action">
-				<button class="btn--save">Save</button>
-			</div>
+				<div class="action">
+					<button type="submit" class="btn--save">Save</button>
+					<% if (typeof(id) != "undefined") { %>
+					<button type="button" class="btn--delete">Delete</button>
+					<% } %>
+				</div>
+
+			</form>
 
 		</script>
 

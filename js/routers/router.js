@@ -4,6 +4,7 @@ var Router = Backbone.Router.extend({
   //   "note/:id": "note",
   //   "note/:id/edit": "edit",
   // }
+
   initialize: function() {
 			var self = this;
 			this._setupCollection();
@@ -11,31 +12,53 @@ var Router = Backbone.Router.extend({
         self.navigate(url, { trigger: true });
       });
     },
+
 		routes: {
-			"" 					: "index",
-			"note/:id" 	: "noteDetail"
+			"" 							: "index",
+			"note/:id" 			: "noteDetail",
+			"note/:id/edit" : "noteEdit",
+			"note" 					: "noteNew"
 		},
+
 		_setupCollection: function() {
 			if(this.collection) return;
 			this.collection = new Notes();
 			this.collection.fetch();
-			console.log("_setupCollection");
-			console.log(this.collection);
 		},
+
 		_renderView: function(view) {
 			$('#app').html(view.render().el);
 		},
+
 		index: function() {
-			console.log("router>index() called")
 			var view = new NoteListView({ collection: this.collection});
 			this._renderView(view);
 		},
+
+		noteNew: function() {
+			var note = new Note();
+			var view = new NoteEditView({
+				model: note,
+				collection: this.collection
+			});
+			this.navigate("note", {trigger: true});
+			this._renderView(view);
+		},
+
+		noteEdit: function(id) {
+			var view = new NoteEditView({
+				model: this.collection.get(id)
+			});
+			this.navigate("note/" + id + "/edit", {trigger: true});
+			this._renderView(view);
+		},
+
 		noteDetail: function(id) {
-			console.log("router>noteDetail() called")
-			var view = new NoteView({model: this.collection.get(id)});
+			var view = new NoteView({
+				model: this.collection.get(id)
+			});
 			this.navigate("note/" + id, {trigger: true});
 			this._renderView(view);
-
 		}
 });
 
