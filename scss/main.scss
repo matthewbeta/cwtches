@@ -1,12 +1,45 @@
+@import "_vars.scss";
 @import "_normalize.scss";
+@import "_icons.scss";
+@import "_typo.scss";
+@import "_edit.scss";
 
 html, 
 body {
-	background-color: #eee;
+	background-color: #f9f8f7;
 	min-height: 100%;
 	color: #4d4d4d;
 }
 .main-content {
-	max-width: 32em;
+	max-width: 42em;
 	margin: 0 auto;
+	padding: 1em;
+}
+.header--app {
+	border-bottom: 1px solid $color-tertiary;
+	padding: 1em 0;
+}
+.header__icon {
+	font-size: 2em;
+	text-decoration: none;
+	color: $color-primary;
+}
+.detail--content {
+	padding: 1em 0;
+}
+.note-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;  
+}
+.note-snippet {
+	display: flex;
+	justify-content: space-between;
+	padding: 1em 0;
+	margin: 0;
+	border-bottom: 1px solid $color-tertiary;
+}
+.note__header {
+	// padding: 1em 0;
+	// border-bottom: 1px solid $color-tertiary;
 }

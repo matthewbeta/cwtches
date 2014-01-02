@@ -51,6 +51,7 @@ var Router = Backbone.Router.extend({
 			});
 			this.navigate("note/" + id + "/edit", {trigger: true});
 			this._renderView(view);
+			$("#noteContent").flexible();
 		},
 
 		noteDetail: function(id) {
@@ -61,19 +62,3 @@ var Router = Backbone.Router.extend({
 			this._renderView(view);
 		}
 });
-
-// var router = new Router;
-
-// router.on('route:home', function() {
-//   noteListView.render();
-// });
-
-// router.on('route:note', function(id) {
-//   noteView.render({id: id});
-// });
-
-// router.on('route:edit', function(id) {
-//  	console.log("edit route requested");
-// })
-
-// Backbone.history.start();

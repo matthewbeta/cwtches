@@ -11,7 +11,9 @@
 
 		<section id="main" class="main-content">
 			<header class="header--app">
-				<h1 class="heading--app">Note taking app</h1>
+				<a href="/" class="header__icon detail-link">
+					<span class="icon icon--write"></span>
+				</a>
 			</header>
 			<!-- /.header app -->
 			<div id="app" class="content"></div>
@@ -20,75 +22,123 @@
 		<!-- /.main-content -->
 
 		<script id="noteSnippet" type="text/template">
-
-			<a href="#" class="detail-link"><h2 class="heading--detail"><%= title %></h2></a>
-			<p class="create-date--detail">Created: <%= createDate %></p>
-			
-			<div class="detail--content"><%= content %></div>
-			
-			<% if (editDate === "") { %>
-			<p class="edit-date--detail">Last updated: <%= createDate %></p>
-			<% } else { %>
-			<p class="edit-date--detail">Last updated: <%= editDate %></p>
-			<% } %>
-			
-			<a href="#" class="edit-link">Edit</a>
+			<header class="note__header">
+				<a href="#" class="detail-link">
+					<h2 class="heading--detail"><%= title %></h2>
+				</a>
+				
+				<% if (editDate === "") { %>
+				<p class="heading--byline">
+					<span class="create-date--detail">Created: 
+					<%= moment(createDate).fromNow() %>
+					</span>
+				</p>
+				<% } else { %>
+				<p class="heading--byline">
+					<span class="create-date--detail">Created: 
+						<%= moment(createDate).fromNow() %>
+					</span> | 
+					<span class="edit-date--detail">Last updated: 
+						<%= moment(editDate).fromNow() %>
+					</span>
+				</p>
+				
+				<% } %>
+			</header>
+			<div class="action--inline">
+				<a href="#" class="btn detail-link"><span class="icon icon--file"></span> Read</a>
+				<a href="#" class="btn edit-link">
+				<span class="icon icon--write"></span>Edit</a>
+			</div>
 
 		</script>
 
 		<script id="note" type="text/template">
+		<div class="note-snippet">
 
-			<h2 class="heading--detail"><%= title %></h2>
-			<p class="create-date--detail">Created: <%= createDate %></p>
-			
-			<div class="detail--content"><%= content %></div>
-			
-			<% if (editDate === "") { %>
-			<p class="edit-date--detail">Last updated: <%= createDate %></p>
-			<% } else { %>
-			<p class="edit-date--detail">Last updated: <%= editDate %></p>
-			<% } %>
-			
-			<button class="btn--edit">Edit</button>
+			<header class="note__header">
+				<h2 class="heading--detail"><%= title %></h2>
+				<p class="heading--byline">
+					<span class="create-date--detail">Created: 
+					<%= moment(createDate).fromNow() %></span>
+					<% if (editDate !== "") { %> | 
+					<span class="heading--byline edit-date--detail">Last updated: 
+						<%= moment(editDate).fromNow() %>
+					</span>
+					<% } %>
+				</p>
 
-			<button class="btn--delete">Delete</button>
+			</header>
+			<div class="action--inline">
+					
+				<div class="btn-group">
+					<a href="#" class="btn btn--edit">
+					<span class="icon icon--write"></span> Edit</a>
+					<a href="#" class="btn btn--delete">
+					<span class="icon icon--trash"></span> Delete</a>
+				</div>
+
+			</div>
+
+		</div>
+			
+
+		<div class="detail--content">
+
+			<% var converter = new Showdown.converter(); %>
+			<%= converter.makeHtml(content) %>
+
+			</div>
+			
+			<div class="action">
+					
+				<div class="btn-group">
+					<a href="#" class="btn btn--edit">
+					<span class="icon icon--write"></span> Edit</a>
+					<a href="#" class="btn btn--delete">
+					<span class="icon icon--trash"></span> Delete</a>
+				</div>
+
+			</div>
 
 		</script>
 
 		<script id="noteEdit" type="text/template">
 			<form action="submit">
 
-				<ul class="note__form">
-
-					<li class="note__form__input">
-						<label for="noteTitle" class="label">Title</label>
-						<input type="text" id="noteTitle" class="input--txt" value="<%= title %>">
-					</li>
-
-					<li class="note__form__input">
-						<label for="noteContent" class="label">Whats up</label>
-						<textarea id="noteContent" class="input--textarea"><%= content %></textarea>
-					</li>	
-
-				</ul>
+				<div class="note__input">
+					<label for="noteContent" class="invisible">Whats up</label>
+					<textarea id="noteContent" class="input--textarea" autofocus="autofocus"><%= content %></textarea>
+				</div>
 
 				<div class="action">
-					<button type="submit" class="btn--save">Save</button>
-					<% if (typeof(id) != "undefined") { %>
-					<button type="button" class="btn--delete">Delete</button>
-					<% } %>
+					<div class="note__title">
+						<label for="noteTitle" class="label heading--byline">Title</label>
+						<input type="text" id="noteTitle" class="input--txt" value="<%= title %>" placeholder="Give it a title">
+					</div>
+					<div class="btn-group">
+						<button type="submit" class=" btn btn--save">
+							<span class="icon icon--save"></span> Save
+						</button>
+						<% if (typeof(id) != "undefined") { %>
+						<button type="button" class=" btn btn--delete">
+							<span class="icon icon--trash"></span> Delete
+						</button>
+						<% } %>
+					</div>
 				</div>
 
 			</form>
 
 		</script>
 
-
 		<script src="js/lib/jquery.min.js"></script>
 		<script src="js/lib/underscore-min.js"></script>
 		<script src="js/lib/backbone-min.js"></script>
 		<script src="js/lib/backbone.localstorage-min.js"></script>
 		<script src="js/lib/moment.min.js"></script>
+		<script src="js/lib/showdown.min.js"></script>
+		<script src="js/lib/jquery.flexibleArea.js"></script>
 		<script src="js/models/note.js"></script>
 		<script src="js/collections/notes.js"></script>
 		<script src="js/views/note-list.js"></script>
@@ -97,73 +147,6 @@
 		<script src="js/views/note-edit.js"></script>
 		<script src="js/routers/router.js"></script>
 		<script src="js/app.js"></script>
-
-		<script>
-
-	    // var Note = Backbone.Model.extend({
-	    // });
-
-		 // 	var Notes = Backbone.Collection.extend({
-		 // 		model: Note,
-		 // 		localStorage: new Backbone.LocalStorage('bbnote')
-	  //   });
- 			
-			// var notes = new Notes;
-
-		 	// var NoteListView = Backbone.View.extend({
-		 	// 	el: "#app",
-		 	// 	render: function() {
-		 	// 		var that = this;
-		 	// 		notes.fetch({
-	   //        success: function (notes) {
-	   //          var template = _.template($('#notes').html(), {notes: notes.models});
-	   //          that.$el.html(template);
-	   //        }
-	   //      });
-		 	// 	}
-		 	// });
-
-		 	// var noteListView = new NoteListView();
-
-		 	// var NoteView = Backbone.View.extend({
-		 	// 	el: "#app",
-		 	// 	render: function(id) {
-					
-				// 	this.$el.html("");
-			 // 			var template = _.template( $('#note').html() );
-			 // 			var that = this;
-			 // 			notes.fetch({
-			 // 				success: function(notes) {
-			 // 					var note = notes.get(id);
-	 		// 					that.$el.html( template( note.toJSON() ) );
-			 // 				}
-			 // 			});
-		 	// 	}
-		 	// });
-
-		 	// var noteView = new NoteView();
-
-		 	// var Router = Backbone.Router.extend({
-    //     routes: {
-    //       "": "home",
-    //       "note/:id": "note"
-    //     }
-	   //  });
-
-	   //  var router = new Router;
-
-	   //  router.on('route:home', function() {
-	   //    noteListView.render();
-	   //  })
-
-	   //  router.on('route:note', function(id) {
-	   //    noteView.render({id: id});
-	   //  })
-
-	   //  Backbone.history.start();
-
-
-		</script>
 
 	</body>
 </html>

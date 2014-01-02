@@ -5,3 +5,7 @@ App.start = function() {
 };
 
 App.start();
+
+$(function() {
+    $("#noteContent").flexible();
+});
