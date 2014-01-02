@@ -1,68 +1,154 @@
 
 
-@import url(http://fonts.googleapis.com/css?family=Oxygen+Mono|Bitter:400,700,400italic|Open+Sans:400,600);
+@import url(http://fonts.googleapis.com/css?family=Oxygen+Mono|Bitter:400,700,400italic|Open+Sans:400);
 
 body {
-	font-family: "Open Sans", sans-serif;
+	font-family: 'Bitter', serif;
 	font-size: 1.2em;
-	line-height: 1.5;
+	line-height: 1.6;
+	color: $color-text;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+	-ms-word-break: break-all;
+	word-break: break-all;
+
+	// Non standard for webkit
+	word-break: break-word;
+ 	-webkit-hyphenate-before: 3;
+  -webkit-hyphenate-after: 3;
+  hyphenate-lines: 3;
+  font-feature-settings: "liga", "dlig";
 }
 .input--textarea {
 	font-family: 'Oxygen Mono', monospace;
 }
+.input--txt {
+	font-family: 'Bitter', serif;
+	font-weight: 400;
+	font-style: italic;
+	color: #aaa;
+}
 h1, h2, h3, h4, h5, h6 {
-	font-weight: 600;
+	font-weight: 400;
 }
 p {
 	margin: 0;
+}
+a {
+	color: $color-primary;
+	text-decoration: none;
+	&:hover, &:focus, &:active {
+		text-decoration: underline;
+	}
 }
 .heading--detail {
 	padding: 0;
 	margin: 0; 
 }
 .heading--byline {
-	text-transform: uppercase;
+	font-style: italic;
 	font-weight: 400;
-	font-size: .5em;
-	letter-spacing: .2em;
-	color: #AAA;
+	font-size: .75em;
+	color: $color-tertiary-on;
 }
 .detail--content {
-	font-family: 'Bitter', serif;
-	font-weight: 400;
 	font-size: 1em; 
-
 	h1, h2, h3, h4, h5, h6 {
-		font-family: "Open Sans", sans-serif;
-		font-weight: 600;
+		font-weight: 400;
 	}
 
 	p {
 		padding-bottom: 1em;
 	}
 
+	blockquote {
+	  position: relative;
+	  margin: 0;
+	  padding: 1em 0 1em 3em;
+	  quotes: "\201C""\201D""\2018""\2019";
+	}
+	blockquote:before {
+		position: absolute;
+		top: 0;
+		left: 0;
+	  color: $color-tertiary-on;
+	  content: open-quote;
+	  font-size: 4em;
+	}
+	blockquote p {
+	  display: inline;
+	}
+
 }
 
+pre,
+code {
+	font-family: 'Oxygen Mono', monospace;
+}
 pre {
 	position: relative;
 	font-family: 'Oxygen Mono', monospace;
 	background-color: #FFF;
 	border: 1px solid $color-tertiary;
-	padding: 1em;
+	padding: 1em 1em 1em 5em;
 	margin-bottom: 2em;
 	border-radius: .2em;
 	&:before {
-		content: "code </>";
-		@extend .heading--byline;
+		content: "</>";
 		position: absolute;
-		top: -2.5em;
+		top: 0;
+		bottom: 0;
 		left: 0;
-		padding: .5em;
+		width: 3em;
+		padding: 1.5em 1em;
+		font-size: .75em;
+		color: #FFF;
+		background-color: $color-tertiary;
+		text-align: center;
+
+	}
+}
+.header__icon {
+	font-size: 2em;
+	text-decoration: none;
+	color: $color-primary;
+	text-decoration: none;
+	transition: all .5s ease-out;
+	&:hover, &:focus, &:active {
+		text-decoration: none;
+		color: $color-confirm;
+		transition: all .2s ease-in;
 	}
 }
 .detail-link {
 	color: $color-primary;
 	text-decoration: none;
+}
+.no-notes {
+	text-align: center;
+	padding: 2em 0;
+	font-family: 'Bitter', serif;
+	font-weight: 400;
+	font-style: italic;
+	color: #aaa;
+}
+.footer--app {
+	font-family: 'Bitter', serif;
+	font-weight: 400;
+	font-style: italic;
+	color: #aaa;
+	font-size: .75em;
+}
+.social-link {
+	font-size: 2em;
+	float: right;
+	padding: 0 .25em; 
+	margin-top: -.25em;
+	&:hover, &:focus, &:active {
+		text-decoration: none;
+		color: $color-confirm;
+	}
 }
 ::-moz-selection { 
 	background: $color-primary; 

@@ -4,9 +4,9 @@
 	padding-top: 1em;
 	border: 0 none;
 	background: transparent none;
-	font-family: 'Fira Mono', monospace;
 	line-height: 2;
 	resize: none;
+
 	&:focus {
 		outline: 0 none;
 	}
@@ -21,7 +21,10 @@
 	}
 }
 
-.label {
+.note__title {
+	.input--txt {
+		min-width: 18em;
+	}
 }
 
 .btn {
@@ -39,15 +42,33 @@
 	letter-spacing: .2em;
 	text-decoration: none;
 
+	&:hover,
+	&:focus,
+	&:active {
+		text-decoration: none;
+		background-color: darken($color-primary, 10);
+	}
+
 	.icon {
 		padding-right: 8px;
 	}
 }
 .btn--delete {
 	background-color: $color-danger;
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: darken($color-danger, 10);
+	}
+
 }
 .btn--save {
 	background-color: $color-confirm;
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: darken($color-confirm, 5)
+	}
 }
 
 .action {
@@ -55,4 +76,10 @@
 	padding: 1em 0;
 	display: flex;
 	justify-content: space-between;
+}
+.action--inline {
+	text-align: right;
+	.btn {
+		margin: 0 0 .5em .5em;
+	}
 }

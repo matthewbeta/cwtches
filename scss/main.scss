@@ -6,23 +6,30 @@
 
 html, 
 body {
-	background-color: #f9f8f7;
+	background-color: $color-bg;
 	min-height: 100%;
-	color: #4d4d4d;
+}
+body {
+	border-top: .5em solid $color-tertiary; 
 }
 .main-content {
 	max-width: 42em;
 	margin: 0 auto;
 	padding: 1em;
 }
+.content {
+	padding: 1em 0;
+}
 .header--app {
 	border-bottom: 1px solid $color-tertiary;
 	padding: 1em 0;
+	display: flex;
+	justify-content: space-between;
 }
-.header__icon {
-	font-size: 2em;
-	text-decoration: none;
-	color: $color-primary;
+
+.footer--app {
+	padding: 2em 0;
+	border-top: 1px solid $color-tertiary;
 }
 .detail--content {
 	padding: 1em 0;
@@ -38,8 +45,10 @@ body {
 	padding: 1em 0;
 	margin: 0;
 	border-bottom: 1px solid $color-tertiary;
+	&:last-child {
+		border-bottom: 0 none;
+	}
 }
 .note__header {
-	// padding: 1em 0;
-	// border-bottom: 1px solid $color-tertiary;
+	width: 65%;
 }

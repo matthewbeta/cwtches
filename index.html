@@ -11,15 +11,41 @@
 
 		<section id="main" class="main-content">
 			<header class="header--app">
-				<a href="/" class="header__icon detail-link">
+				<a href="/#note" class="header__icon detail-link">
 					<span class="icon icon--write"></span>
+					<span class="invisible">Write</span>
+				</a>
+				<a href="/" class="header__icon">
+					<span class="icon icon--menu"></span>
+					<span class="invisible">View all</span>
 				</a>
 			</header>
 			<!-- /.header app -->
+
 			<div id="app" class="content"></div>
 			<!-- /#app -->
+
+			<footer class="footer--app">
+				
+				<p>© 2014 | 
+					A side project by <a href="http://matthew-jackson.com">matthewbeta</a>
+
+					<a href="http://github.com/matthewbeta/backboneNote" class="social-link">
+						<span class="icon icon--github"></span>
+						<span class="invisible">Github</span>
+					</a> 
+
+					<a href="http://twitter.com/matthewbeta" class="social-link">
+						<span class="icon icon--twitter"></span>
+						<span class="invisible">Twitter</span>
+					</a> 
+
+				</p>
+
+			</footer>
 		</section>
 		<!-- /.main-content -->
+
 
 		<script id="noteSnippet" type="text/template">
 			<header class="note__header">
@@ -62,7 +88,7 @@
 					<span class="create-date--detail">Created: 
 					<%= moment(createDate).fromNow() %></span>
 					<% if (editDate !== "") { %> | 
-					<span class="heading--byline edit-date--detail">Last updated: 
+					<span class="edit-date--detail">Last updated: 
 						<%= moment(editDate).fromNow() %>
 					</span>
 					<% } %>
@@ -107,7 +133,7 @@
 			<form action="submit">
 
 				<div class="note__input">
-					<label for="noteContent" class="invisible">Whats up</label>
+					<label for="noteContent" class="label heading--byline">Write</label>
 					<textarea id="noteContent" class="input--textarea" autofocus="autofocus"><%= content %></textarea>
 				</div>
 
