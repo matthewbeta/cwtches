@@ -1,0 +1,74 @@
+
+
+@import url(http://fonts.googleapis.com/css?family=Oxygen+Mono|Bitter:400,700,400italic|Open+Sans:400,600);
+
+body {
+	font-family: "Open Sans", sans-serif;
+	font-size: 1.2em;
+	line-height: 1.5;
+}
+.input--textarea {
+	font-family: 'Oxygen Mono', monospace;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+}
+p {
+	margin: 0;
+}
+.heading--detail {
+	padding: 0;
+	margin: 0; 
+}
+.heading--byline {
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: .5em;
+	letter-spacing: .2em;
+	color: #AAA;
+}
+.detail--content {
+	font-family: 'Bitter', serif;
+	font-weight: 400;
+	font-size: 1em; 
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: "Open Sans", sans-serif;
+		font-weight: 600;
+	}
+
+	p {
+		padding-bottom: 1em;
+	}
+
+}
+
+pre {
+	position: relative;
+	font-family: 'Oxygen Mono', monospace;
+	background-color: #FFF;
+	border: 1px solid $color-tertiary;
+	padding: 1em;
+	margin-bottom: 2em;
+	border-radius: .2em;
+	&:before {
+		content: "code </>";
+		@extend .heading--byline;
+		position: absolute;
+		top: -2.5em;
+		left: 0;
+		padding: .5em;
+	}
+}
+.detail-link {
+	color: $color-primary;
+	text-decoration: none;
+}
+::-moz-selection { 
+	background: $color-primary; 
+	color: #fff; 
+	text-shadow: none; }
+::selection { 
+	background: $color-primary; 
+	color: #fff; 
+	text-shadow: none; }

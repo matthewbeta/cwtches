@@ -1,0 +1,15 @@
+$color-primary: #2A90EE;
+$color-danger: #DD4A4A;
+$color-confirm: #0AE484;
+$color-tertiary: #DDD;
+
+.invisible { 
+	border: 0; 
+	clip: rect(0 0 0 0); 
+	height: 1px; 
+	margin: -1px; 
+	overflow: hidden; 
+	padding: 0; 
+	position: absolute; 
+	width: 1px; 
+}

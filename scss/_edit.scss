@@ -1,0 +1,58 @@
+.input--textarea {
+	width: 100%;
+	margin-bottom: 1em;
+	padding-top: 1em;
+	border: 0 none;
+	background: transparent none;
+	font-family: 'Fira Mono', monospace;
+	line-height: 2;
+	resize: none;
+	&:focus {
+		outline: 0 none;
+	}
+}
+.input--txt {
+	border: 1px solid $color-tertiary;
+	padding: .5em;
+	color: #434343;
+	&:focus {
+		outline: 0 none;
+		border-color: $color-primary;
+	}
+}
+
+.label {
+}
+
+.btn {
+	display: inline-block;
+	padding: 1em;
+	border: 0 none;
+	border-radius: .2em;
+	background: $color-primary;
+	color: #FFF;
+	font-size: .75em;
+	font-weight: normal;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: .2em;
+	text-decoration: none;
+
+	.icon {
+		padding-right: 8px;
+	}
+}
+.btn--delete {
+	background-color: $color-danger;
+}
+.btn--save {
+	background-color: $color-confirm;
+}
+
+.action {
+	border-top: 1px solid #DDD;
+	padding: 1em 0;
+	display: flex;
+	justify-content: space-between;
+}
