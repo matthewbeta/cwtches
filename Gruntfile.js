@@ -62,6 +62,7 @@ module.exports = function(grunt) {
       build: {
         files: [
           {expand: true, src: ['index.html'], dest: 'build', filter: 'isFile'},
+          {expand: true, src: ['cwtches.mf'], dest: 'build', filter: 'isFile'},
           {expand: true, src: ['css/*.css'], dest: 'build', filter: 'isFile'},
           {expand: true, src: ['js/**/*.js'], dest: 'build', filter: 'isFile'},
           {expand: true, src: ['fonts/*'], dest: 'build', filter: 'isFile'},
