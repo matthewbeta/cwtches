@@ -66,6 +66,7 @@ module.exports = function(grunt) {
           {expand: true, src: ['css/*.css'], dest: 'build', filter: 'isFile'},
           {expand: true, src: ['js/**/*.js'], dest: 'build', filter: 'isFile'},
           {expand: true, src: ['fonts/*'], dest: 'build', filter: 'isFile'},
+          {expand: true, src: ['favicon.ico', 'apple-touch-icon-precomposed.png'], dest: 'build', filter: 'isFile'},
         ]
       }
     },

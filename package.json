@@ -1,6 +1,6 @@
 {
   "name": "Cwtches",
-  "version": "0.2.0",
+  "version": "0.3.2",
   "description": "A place to store your notes... and not share them",
   "main": "index.html",
   "scripts": {
