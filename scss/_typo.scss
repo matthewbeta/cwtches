@@ -139,17 +139,29 @@ pre {
 	font-style: italic;
 	color: #aaa;
 	font-size: .75em;
+	@extend %clr;
+	@media all and (min-width: 42em) {
+		p {
+			float: left;
+			width: 50%;
+			&:last-child {
+				margin-top: -1em;
+				text-align: right;
+			}
+		}
+	}
 }
 .social-link {
 	font-size: 2em;
-	float: right;
 	padding: 0 .25em; 
-	margin-top: -.25em;
+	@media all and (min-width: 42em) {
+	}
 	&:hover, &:focus, &:active {
 		text-decoration: none;
 		color: $color-confirm;
 	}
 }
+
 ::-moz-selection { 
 	background: $color-primary; 
 	color: #fff; 

@@ -16,3 +16,13 @@ $color-tertiary-on: #AAA;
 	position: absolute; 
 	width: 1px; 
 }
+%clr {
+	&:before,
+	&:after {
+	    content: " "; 
+	    display: table;
+	}
+	&:after {
+	    clear: both;
+	}
+}

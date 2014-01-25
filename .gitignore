@@ -1,0 +1,15 @@
+.ftppass
+node_modules
+.tmp
+.sass-cache
+.sass-cache/7e289538d871df6b320865b74739888a92b5f563/_typo.scssc
+
+*.scssc
+
+.sass-cache/7e289538d871df6b320865b74739888a92b5f563/_vars.scssc
+
+.sass-cache/7e289538d871df6b320865b74739888a92b5f563/_vars.scssc
+
+.sass-cache/7e289538d871df6b320865b74739888a92b5f563/main.scssc
+
+.sass-cache/7e289538d871df6b320865b74739888a92b5f563/main.scssc

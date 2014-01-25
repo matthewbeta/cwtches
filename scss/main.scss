@@ -4,10 +4,14 @@
 @import "_typo.scss";
 @import "_edit.scss";
 
+* {
+	box-sizing: border-box;
+}
 html, 
 body {
 	background-color: $color-bg;
 	min-height: 100%;
+
 }
 body {
 	border-top: .5em solid $color-tertiary; 
@@ -40,8 +44,6 @@ body {
 	margin: 0;  
 }
 .note-snippet {
-	display: flex;
-	justify-content: space-between;
 	padding: 1em 0;
 	margin: 0;
 	border-bottom: 1px solid $color-tertiary;
@@ -50,5 +52,10 @@ body {
 	}
 }
 .note__header {
-	width: 65%;
+	width: 100%;
+	padding: 0 0 1em;
+	@media all and (min-width: 40em) {
+		width: 65%;
+		float: left;
+	}
 }

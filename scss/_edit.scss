@@ -23,8 +23,22 @@
 
 .note__title {
 	.input--txt {
-		min-width: 18em;
+		display: block;
+		width: 100%;
 	}
+	@media all and (min-width: 42em) {
+		width: 75%;
+		float: left;
+		.input--txt {
+			display: inline;
+			width: auto;
+			min-width: 18em;
+			margin-left: 1em;
+		}
+	}
+}
+.note__title + .btn-group {
+	overflow: hidden;
 }
 
 .btn {
@@ -64,6 +78,11 @@
 }
 .btn--save {
 	background-color: $color-confirm;
+	width: 100%;
+	margin-top: 1em;
+	@media all and (min-width: 42em) {
+		margin-top: 0;
+	}
 	&:hover,
 	&:focus,
 	&:active {
@@ -74,12 +93,17 @@
 .action {
 	border-top: 1px solid #DDD;
 	padding: 1em 0;
-	display: flex;
-	justify-content: space-between;
 }
 .action--inline {
-	text-align: right;
+	overflow: hidden;
+	@media all and (min-width: 42em) {
+		text-align: right;
+	}
 	.btn {
-		margin: 0 0 .5em .5em;
+		margin: 0 0 .5em 0;
+		@media all and (min-width: 42em) {
+			margin-left: .5em;
+		}
+		
 	}
 }
